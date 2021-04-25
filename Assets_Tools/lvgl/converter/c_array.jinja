@@ -1,0 +1,102 @@
+#if defined(LV_LVGL_H_INCLUDE_SIMPLE)
+#include "lvgl.h"
+#else
+#include "../lvgl/lvgl.h"
+#endif
+
+
+#ifndef LV_ATTRIBUTE_MEM_ALIGN
+#define LV_ATTRIBUTE_MEM_ALIGN
+#endif
+
+#ifndef LV_ATTRIBUTE_IMG_{{include_name}}
+#define LV_ATTRIBUTE_IMG_{{include_name}}
+#endif
+
+const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_{{include_name}} uint8_t {{output_name_file}}_map[] = {
+{%- if true_color or true_color_alpha or true_color_chroma  %}
+#if LV_COLOR_DEPTH == 1 || LV_COLOR_DEPTH == 8
+  {% if true_color_alpha -%}
+    /*Pixel format: Blue: 2 bit, Green: 3 bit, Red: 3 bit, Alpha 8 bit */
+  {%- else -%}
+    /*Pixel format: Blue: 2 bit, Green: 3 bit, Red: 3 bit*/
+  {%- endif -%}
+  {%- for row in true_color_bin332 %}
+  {% for data in row -%} 0x{{ "%02x" % data }}, {% endfor %}
+  {%- endfor %}
+#endif
+#if LV_COLOR_DEPTH == 16 && LV_COLOR_16_SWAP == 0
+  {% if true_color_alpha %}
+    /*Pixel format: Blue: 5 bit, Green: 6 bit, Red: 5 bit, Alpha 8 bit*/
+  {%- else -%}
+    /*Pixel format: Blue: 5 bit, Green: 6 bit, Red: 5 bit*/
+  {%- endif -%}
+  {%- for row in true_color_bin565 %}
+  {% for data in row -%} 0x{{ "%02x" % data }}, {% endfor -%}
+  {%- endfor %}
+#endif
+#if LV_COLOR_DEPTH == 16 && LV_COLOR_16_SWAP != 0
+  {%if true_color_alpha %}
+    /*Pixel format:  Blue: 5 bit Green: 6 bit, Red: 5 bit, Alpha 8 bit  BUT the 2  color bytes are swapped*/
+  {%- else -%}
+    /*Pixel format: Blue: 5 bit, Green: 6 bit, Red: 5 bit BUT the 2 bytes are swapped*/
+  {%- endif -%}
+  {%- for row in true_color_bin565_swap %}
+  {% for data in row -%} 0x{{ "%02x" % data }}, {% endfor %}
+  {%- endfor %}
+#endif
+#if LV_COLOR_DEPTH == 32
+  {%if true_color_alpha %}
+    /*Pixel format:  Blue: 8 bit, Green: 8 bit, Red: 8 bit, Alpha: 8 bit*/
+  {%- else -%}
+    /*Pixel format: Blue: 8 bit, Green: 8 bit, Red: 8 bit, Fix 0xFF: 8 bit, */
+  {%- endif -%}
+  {%- for row in true_color_bin888 %}
+  {% for data in row -%} 0x{{ "%02x" % data }}, {% endfor %}
+  {%- endfor %}
+#endif
+{%- else -%}
+  {% for i in range(0, bin_out_header) %}
+    {%- for data in bin_out.__next__() -%} 0x{{ "%02x" % data }}, {% endfor %} {%if indexed_1 or indexed_2 or indexed_4 or indexed_8-%} {{"\t"}}/*Color of index {{i}}*/{%-endif-%}
+  {% endfor -%}
+  {%- for _ in range(0, bin_out_row_count) %}
+  {% for data in bin_out.__next__() -%} 0x{{ "%02x" % data }}, {% endfor %}
+  {%- endfor -%}
+{%- endif %}
+};
+{%- if raw or raw_alpha or raw_chroma -%}
+{%- set width="" -%}
+{%- set height="" -%}
+{%- endif -%}
+const lv_img_dsc_t {{output_name_file}} = {
+  .header.always_zero = 0,
+  .header.w = {{width}},
+  .header.h = {{height}},
+{%- if alpha_1 or alpha_2 or alpha_4 or alpha_8 %}
+  .data_size = {{ len_bin_out }},
+  .header.cf = LV_IMG_CF_ALPHA_{{ log2_alpha }}BIT,
+{%- elif indexed_1 or indexed_2 or indexed_4 or indexed_8 %}
+  .data_size = {{ len_bin_out }},
+  .header.cf = LV_IMG_CF_INDEXED_{{ log2_indexed }}BIT,
+{%- elif true_color %}
+  .data_size = {{ width * height }} * LV_COLOR_SIZE / 8,
+  .header.cf = LV_IMG_CF_TRUE_COLOR,
+{%- elif true_color_alpha %}
+  .data_size = {{ width * height }} * LV_IMG_PX_SIZE_ALPHA_BYTE,
+  .header.cf = LV_IMG_CF_TRUE_COLOR_ALPHA,
+{%- elif true_color_chroma %}
+  .data_size = {{ width * height }} * LV_COLOR_SIZE / 8,
+  .header.cf = LV_IMG_CF_TRUE_COLOR_CHROMA_KEYED,
+{%- elif raw %}
+  .data_size = {{ len_bin_out }},
+  .header.cf = LV_IMG_CF_RAW,
+{%- elif raw_alpha %}
+  .data_size = {{ len_bin_out }},
+  .header.cf = LV_IMG_CF_RAW_ALPHA,
+{%- elif raw_chroma %}
+  .data_size = {{ len_bin_out }},
+  .header.cf = LV_IMG_CF_RAW,
+{%- endif %}
+  .data = {{ output_name_file }}_map,
+};
+

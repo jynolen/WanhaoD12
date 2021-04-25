@@ -1,0 +1,20 @@
+{
+    "python.pythonPath": ".venv/bin/python",
+    "python.testing.pytestArgs": [
+        "Assets_Tools/tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.envFile": "${workspaceFolder}/.env",
+    "files.associations": {
+        ".jinja": "jinja",
+        "*.tf": "tf",
+        "*.jinja": "c",
+        "cmath": "c",
+        "random": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
+    }
+}

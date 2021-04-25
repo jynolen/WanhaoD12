@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+platformio = "*"
+Pillow = "*"
+jinja2 = "*"
+
+[dev-packages]
+pytest = "*"
+pylint = "*"
+autopep8 = "*"
+numpy = "*"
+
+[requires]
+python_version = "3"

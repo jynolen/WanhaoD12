@@ -12,6 +12,7 @@ If you download Community or Vendor be sure to grab (mks_font, mks_pic, Robin_na
   - git
   - python3
   - pipenv
+
 ### Install system requirements
 #### Debian/Ubuntu 
 ```
@@ -22,6 +23,7 @@ If you download Community or Vendor be sure to grab (mks_font, mks_pic, Robin_na
   # After this make sure $HOME/.local/bin is in your path, usually this is done when you open a terminal / session
   # you can check with echo $PATH | grep .local/bin
 ```
+
 #### Centos/Redhat/Fedora
 ```
   # As root (with or without sudo)
@@ -36,9 +38,10 @@ If you download Community or Vendor be sure to grab (mks_font, mks_pic, Robin_na
 Those commands will download current project and install all dependencies
 ```
   > git clone https://github.com/jynolen/WanhaoD12.git
-  > cd WanhaoD12/AutoBuild-MarlinFirware
+  > cd WanhaoD12
   > PIPENV_VENV_IN_PROJECT="enabled" pipenv install
   > pipenv shell
+  > cd AutoBuild-MarlinFirware
 ```
 
 ### First compilation (Sanity Build)
@@ -139,6 +142,7 @@ You can add the following snippet to platformio.ini
 extends         = mks_robin_nano35
 build_flags     = ${mks_robin_nano35.build_flags} -DD12230
 ```
+
 #### Define variables
 You might want to define some constants. You can do it directly within the code by removing / adding "//" characters 
 Or you can defined build flags in platformio
@@ -155,8 +159,14 @@ And edit your env
 extends         = mks_robin_nano35
 build_flags     = ${mks_robin_nano35.build_flags} -DFOOBAR
 ```
+
 #### Buit it !
 You can now built it with 
 ```
   > platformio run -e custom
 ```
+
+
+# Credit:
+
+https://github.com/IQAndreas/sample-images
