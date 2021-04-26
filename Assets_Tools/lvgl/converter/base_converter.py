@@ -4,10 +4,13 @@ from PIL import Image
 from abc import ABC, abstractmethod
 from lvgl.converter.utility import palette_to_rgb
 
-from lvgl.lvgl_enum import ColorFormat
+from lvgl.lvgl_enum import ColorFormat, OuputFormat
 from pathlib import Path
 from math import log2
 from abc import ABC
+from cairosvg import svg2png
+import io
+
 
 class Converter(ABC):
     converter: ColorFormat
@@ -16,7 +19,7 @@ class Converter(ABC):
     alpha_size = 0
     c_array = []
     lv_cf = None
-
+    dithering = False
     @classmethod
     def instanciate(cls, format: ColorFormat):
         for c in cls.__subclasses__():
@@ -55,7 +58,14 @@ class Converter(ABC):
         self.dithering = args["dithering"]
         self.output_mode = args["output_format"]
         self.filename = self.file.name.split(".")[0]
-        self.image: Image = Image.open(self.file)
+
+        try:
+            self.image: Image = Image.open(self.file)
+        except:
+            try:
+                self.image = Image.open(io.BytesIO(svg2png(file_obj=self.file.open())))
+            except:
+                raise ValueError("Unsupported Image format")
         if self.alpha:
             self.image = self.image.convert("RGBA")
 
