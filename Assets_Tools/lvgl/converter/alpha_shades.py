@@ -1,5 +1,5 @@
 from lvgl.converter.base_converter import Converter
-from lvgl.lvgl_enum import ColorFormat
+from lvgl.converter.lvgl_enum import ColorFormat
 from lvgl.converter.utility import consume
 
 class AlphaShadesConverter(Converter):

@@ -2,13 +2,29 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Module",
+            "name": "Converter",
             "type": "python",
             "request": "launch",
-            "module": "lvgl",
-            "justMyCode": true,
+            "module": "lvgl.converter",
             "args": [
-                "--color_format", "true_color_chroma", "Assets_Tools/tests/samples/random_png_1.png", "--output_c", "--output_format", "bin_332"
+                "--color_format", 
+                "true_color_alpha", 
+                "Assets_Tools/tests/samples/random_png_1.png", 
+                "--output_format", 
+                "bin_332"
+            ]
+        },
+        {
+            "name": "Deconverter",
+            "type": "python",
+            "request": "launch",
+            "module": "lvgl.deconverter",
+            "args": [
+                "--output_format", 
+                "bin_332", 
+                "--output_file", 
+                "test.png", 
+                "random_png_1.bin"
             ]
         }
     ]

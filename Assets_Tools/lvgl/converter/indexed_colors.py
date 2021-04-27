@@ -1,7 +1,7 @@
-from lvgl.converter.base_converter import Converter
-from lvgl.lvgl_enum import ColorFormat
-from lvgl.converter.utility import consume
 from abc import ABC
+from lvgl.converter.base_converter import Converter
+from lvgl.converter.lvgl_enum import ColorFormat
+from lvgl.converter.utility import consume
 
 class IndexedColorsConverter(Converter):
     def format_bin_out(self):

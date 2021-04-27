@@ -1,5 +1,6 @@
 import enum
 import decimal
+import struct
 
 def classify_pixel(pixel, bits):
     assert len(pixel) >= 3 and len(bits) >= 3
@@ -17,11 +18,31 @@ class SmartEnum(enum.Enum):
 
 class RGB332:
     value = "bin_332"
-
+    bytes_per_pixel = 1
     @classmethod
     def convert_rgba(cls, r, g, b, a, include_alpha=False):
-        return [ r | (g >> 3) | (b >> 6) ] + ([a] if include_alpha else [])
+        # Keep most signicant bits of each colors
+        r_mask = 0b11100000 # 3 bits for red
+        g_mask = 0b00011100 # 3 bits for green
+        b_mask = 0b00000011 # 3 bits for blue
+        
+        r_ = (    r     & r_mask )
+        g_ = ( (g >> 3) & g_mask )
+        b_ = ( (b >> 6) & b_mask )
+        return [ r_ | g_ | b_ ] + ([a] if include_alpha else [])
 
+    @classmethod
+    def convert_bin(cls, pixel):
+        pixel  = struct.unpack(f'>B', pixel)[0]
+        r_mask = 0b11100000
+        g_mask = 0b00011100
+        b_mask = 0b00000011
+
+        r = ( pixel & r_mask )
+        g = ( pixel & g_mask ) << 3 
+        b = ( pixel & b_mask ) << 5 
+        
+        return r,g,b
     @classmethod
     def dithering(cls, pixel):
         r, g, b = classify_pixel(pixel, (3,3,2))
@@ -37,11 +58,21 @@ class RGB332:
 
 class RGB565:
     value = "bin_565"
-
+    bytes_per_pixel = 2
     @classmethod
     def convert_rgba(cls, r, g, b, a, include_alpha=False):
-        p = (r << 8) | (g << 3) | (b >> 3)
-        return [ p & 0xff,  (p >> 8) & 0xff ]  + ([a] if include_alpha else [])
+        # Keep most signicant bits of each colors
+        r_mask = 0b11111000 # 5 bits for red
+        g_mask = 0b11111100 # 6 bits for green
+        b_mask = 0b11111000 # 5 bits for blue
+
+        
+        r_ =   ( r  & r_mask )        << 8 
+        g_ = ( ( g  & g_mask ) >> 2 ) << 5
+        b_ = ( ( b  & g_mask ) >> 3 )
+
+        long = r_ | g_ | b_
+        return [ (long >> 8), long & 0xff ] + ([a] if include_alpha else [])
 
     @classmethod
     def dithering(cls, pixel):
@@ -51,6 +82,19 @@ class RGB565:
             "g" : 0xfc if g > 0xfc else g,
             "b" : 0xf8 if b > 0xf8 else b
         }
+
+    @classmethod
+    def convert_bin(cls, pixel):
+        pixel  = struct.unpack(f'>H', pixel)[0]
+        r_mask = 0b1111100000000000
+        g_mask = 0b0000011111100000
+        b_mask = 0b0000000000111111
+
+        r = ( pixel & r_mask ) >> 8
+        g = ( pixel & g_mask ) >> 3
+        b = ( pixel & b_mask ) << 3
+
+        return r,g,b
 
     @classmethod
     def row_size(cls, width):
@@ -58,11 +102,20 @@ class RGB565:
 
 class RGB565_SWAP:
     value = "bin_565_swap"
-
+    bytes_per_pixel = 2
     @classmethod
     def convert_rgba(cls, r, g, b, a, include_alpha=False):
-        p = (r << 8) | (g << 3) | (b >> 3)
-        return [ (p >> 8) & 0xff, p & 0xff ] + ([a] if include_alpha else [])
+        # Keep most signicant bits of each colors
+        r_mask = 0b11111000 # 5 bits for red
+        g_mask = 0b11111100 # 6 bits for green
+        b_mask = 0b11111000 # 5 bits for blue
+
+        r_ = ( ( r  & r_mask ) >> 3 )       
+        g_ = ( ( g  & g_mask ) >> 2 ) << 5
+        b_ =   ( b_ & g_mask )        << 8
+        
+        long = r_ | g_ | b_
+        return [ (long >> 8), long & 0xff ] + ([a] if include_alpha else [])
 
     @classmethod
     def dithering(cls, pixel):
@@ -74,15 +127,41 @@ class RGB565_SWAP:
         }
 
     @classmethod
+    def convert_bin(cls, pixel):
+        pixel  = struct.unpack(f'>H', pixel)[0]
+
+        r_mask = 0b0000000000111111
+        g_mask = 0b0000011111100000
+        b_mask = 0b1111100000000000
+
+        r = ( pixel & r_mask ) << 3
+        g = ( pixel & g_mask ) >> 3
+        b = ( pixel & b_mask ) >> 8
+        return r,g,b
+
+    @classmethod
     def row_size(cls, width):
         return 2*width
 
 class RGB888:
     value = "bin_888"
-
+    bytes_per_pixel = 3
     @classmethod
     def convert_rgba(cls, r, g, b, a, include_alpha=False):
         return [ b, g, r, a ]
+
+    @classmethod
+    def convert_bin(cls, pixel):
+        pixel  = struct.unpack(f'>L', b"\0" + pixel)[0]
+        r_mask = 0b000000000000000011111111
+        g_mask = 0b000000001111111100000000
+        b_mask = 0b111111110000000000000000
+                   
+        r = ( pixel & r_mask )
+        g = ( pixel & g_mask ) >> 8
+        b = ( pixel & b_mask ) >> 8*2
+
+        return r,g,b
 
     @classmethod
     def dithering(cls, pixel):

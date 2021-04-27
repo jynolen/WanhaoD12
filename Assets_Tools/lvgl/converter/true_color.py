@@ -1,10 +1,11 @@
+import copy
 from lvgl.converter.base_converter import Converter
-from lvgl.lvgl_enum import ColorFormat, OuputFormat
+from lvgl.converter.lvgl_enum import ColorFormat, OuputFormat
 from jinja2 import Template
 from pathlib import Path
 from abc import ABC
 from lvgl.converter.utility import consume
-import copy
+
 
 class TrueColorCommonConverter(Converter):
     act = {"r":None, "g":None, "b": None }
@@ -47,7 +48,7 @@ class TrueColorCommonConverter(Converter):
                 self.narr[x+1][key] += round((5 * self.err[key]) / 16)
                 self.narr[x+2][key] += round(self.err[key] / 16)
         else:
-            self.act = self.output_mode.dithering(pixel)
+            self.act = { "r":pixel[0], "g":pixel[1], "b":pixel[2] }
     
     def export_to_c_array(self):
         true_color_out = { self.output_mode.value : copy.deepcopy(self.bin_out) }

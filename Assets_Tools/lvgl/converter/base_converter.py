@@ -1,16 +1,15 @@
 import struct
+import io
+
 from jinja2 import Template
 from PIL import Image
 from abc import ABC, abstractmethod
 from lvgl.converter.utility import palette_to_rgb
-
-from lvgl.lvgl_enum import ColorFormat, OuputFormat
+from lvgl.converter.lvgl_enum import ColorFormat, OuputFormat
 from pathlib import Path
 from math import log2
 from abc import ABC
 from cairosvg import svg2png
-import io
-
 
 class Converter(ABC):
     converter: ColorFormat
@@ -20,6 +19,7 @@ class Converter(ABC):
     c_array = []
     lv_cf = None
     dithering = False
+    
     @classmethod
     def instanciate(cls, format: ColorFormat):
         for c in cls.__subclasses__():
@@ -27,6 +27,15 @@ class Converter(ABC):
                 if sub.converter == format:
                     return sub
         raise NotImplementedError()
+
+    @classmethod
+    def get_class_from_header(cls, header):
+        for c in cls.__subclasses__():
+            for sub in c.__subclasses__():
+                if sub.lv_cf == header:
+                    return sub
+        raise NotImplementedError()
+
 
     @abstractmethod
     def convert_pixel_internal(self, pixel, x, y):

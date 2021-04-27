@@ -1,6 +1,6 @@
 import argparse
-from lvgl.lvgl_enum import OuputFormat, ColorFormat
-from lvgl.algo import SmartConverter
+from lvgl.converter.lvgl_enum import OuputFormat, ColorFormat
+from lvgl.converter.algo import SmartConverter
 from pathlib import Path
 class CreateOutputFormat(argparse.Action):
     choices = [ f.value.value for f in list(OuputFormat) ]

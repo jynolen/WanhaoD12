@@ -8,6 +8,7 @@ platformio = "*"
 Pillow = "*"
 jinja2 = "*"
 cairosvg = "*"
+numpy = "*"
 
 [dev-packages]
 pytest = "*"
