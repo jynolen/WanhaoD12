@@ -5,16 +5,11 @@ name = "pypi"
 
 [packages]
 platformio = "*"
-Pillow = "*"
-jinja2 = "*"
-cairosvg = "*"
-numpy = "*"
+pylvgl = { extras = ["svg"], version = "*" }
 
 [dev-packages]
-pytest = "*"
 pylint = "*"
 autopep8 = "*"
-numpy = "*"
 
 [requires]
-python_version = "3"
+python_version = "3.8"
