@@ -92,7 +92,7 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Make assets
-        run: make -j -f Assets/Makefile ${${{ matrix.assets_env }}//./\/}
+        run: make -j -f Assets/Makefile $(echo ${{ matrix.assets_env }} |  tr . /)
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
