@@ -4,7 +4,7 @@ name: Build Firmware
 on:
   push:
     branches:
-      - master
+      - workflow_debug
     tags:
       - v*
   workflow_dispatch:
@@ -24,9 +24,7 @@ jobs:
         run: echo Welcome Builder !
       - name: Execute the pipenv install
         run: pipenv install
-      - name: Get a shell into the project
-        run: pipenv shell
       - name: Execute platformio build
         run: |
           cd AutoBuild-MarlinFirware
-          platformio pipenv shell run -e wanhao__d12__230
+          pipenv run platformio pipenv shell run -e wanhao__d12__230
