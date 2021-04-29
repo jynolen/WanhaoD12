@@ -10,8 +10,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_firmware:
+  Build_Firmware:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix: 
+        firmware_env:
+          - wanhao__d12__230
+          - wanhao__d12__230__bltouch
+          - wanhao__d12__230__full
+          - wanhao__d12__230__full__bltouch
+          - wanhao__d12__300
+          - wanhao__d12__300__bltouch
+          - wanhao__d12__300__full
+          - wanhao__d12__300__full__bltouch
+          - wanhao__d12__lvgl__230
+          - wanhao__d12__lvgl__300
+          - wanhao__d12__lvgl__230__bltouch
+          - wanhao__d12__lvgl__300__bltouch
+          - wanhao__d12__lvgl__230__full
+          - wanhao__d12__lvgl__300__full
+          - wanhao__d12__lvgl__230__full__bltouch
+          - wanhao__d12__lvgl__300__full__bltouch
     steps:
       - uses: actions/checkout@v2
       - name: Cache pip
@@ -35,4 +54,4 @@ jobs:
       - name: Execute platformio install
         run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/common.platform.ini )
       - name: Execute platformio build
-        run: pipenv run platformio run -d AutoBuild-MarlinFirware -e wanhao__d12__230
+        run: pipenv run platformio run -d AutoBuild-MarlinFirware -e ${{ matrix.firmware_env }}
