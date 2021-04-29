@@ -98,7 +98,7 @@ jobs:
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
-          name: assets-{{ matrix.assets_env }}
+          name: assets-${{ matrix.assets_env }}
           path: .build/*
   Create_Release:
     runs-on: ubuntu-20.04
