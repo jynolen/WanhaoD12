@@ -81,6 +81,6 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Make assets
-        run: make -f Assets/Makefile ${{ matrix.assets_env }}
+        run: make -j -f Assets/Makefile ${{ matrix.assets_env }}
 
       
