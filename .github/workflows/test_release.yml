@@ -10,9 +10,11 @@ jobs:
     name: "Tagged Release"
     runs-on: "ubuntu-latest"
     steps:
-      - name: "Build & test"
-        run: |
-          echo "done!"
+      - name: Upload ${{ matrix.assets_env }} Assets Compiled
+        uses: actions/upload-artifact@v2
+        with:
+          name: README.md
+          path: README.md
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
