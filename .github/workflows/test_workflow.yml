@@ -69,7 +69,7 @@ jobs:
         assets_env:
           - MKS
           - Wanhao
-          - Community/LeLudoLab
+          - Community.LeLudoLab
     steps:
       - uses: actions/checkout@v2
       - name: Cache pip
@@ -86,7 +86,7 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Make assets
-        run: make -j -f Assets/Makefile ${{ matrix.assets_env }}
+        run: make -j -f Assets/Makefile ${${{ matrix.assets_env }}//./\/}
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
