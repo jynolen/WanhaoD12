@@ -56,6 +56,11 @@ jobs:
         run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/common.platform.ini )
       - name: Execute platformio build
         run: pipenv run platformio run -d AutoBuild-MarlinFirware -e ${{ matrix.firmware_env }}
+      - name: Upload ${{ matrix.firmware_env }} Firmware
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.firmware_env }}
+          path: AutoBuild-MarlinFirware/.pio/build/${{ matrix.firmware_env }}/out/Robin_nano.bin
   Make_Assets:
     runs-on: ubuntu-20.04
     strategy:
@@ -82,5 +87,9 @@ jobs:
         run: pipenv install
       - name: Make assets
         run: make -j -f Assets/Makefile ${{ matrix.assets_env }}
-
+      - name: Upload ${{ matrix.assets_env }} Assets Compiled
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.assets_env }}
+          path: .build/${{ matrix.assets_env }}
       
