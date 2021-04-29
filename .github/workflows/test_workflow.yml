@@ -14,17 +14,25 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      - name: Cache PlatformIO
+        uses: actions/cache@v2
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}      
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Install minimal deps (pip && pipenv)
-        run:  python -m pip install --upgrade pip pipenv  
-      - name: Print a Welcome Message
-        run: echo Welcome Builder !
+        run:  python -m pip install --upgrade pip pipenv
       - name: Execute the pipenv install
         run: pipenv install
+      - name: Execute platformio install
+        run: pipenv run platformio platform install $(awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/platformio.ini |grep -v '${'|uniq )
       - name: Execute platformio build
-        run: |
-          cd AutoBuild-MarlinFirware
-          pipenv run platformio run -e wanhao__d12__230
+        run: pipenv run platformio run -d AutoBuild-MarlinFirware -e wanhao__d12__230
