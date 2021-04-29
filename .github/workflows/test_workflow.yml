@@ -93,6 +93,7 @@ jobs:
           name: assets-{{ matrix.assets_env }}
           path: .build/${{ matrix.assets_env }}
   Create_Release:
+    runs-on: ubuntu-20.04
     needs: 
       - Make_Assets
       - Build_Firmware
