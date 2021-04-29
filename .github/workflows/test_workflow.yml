@@ -23,8 +23,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.platformio
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}      
-      - name: Set up Python ${{ matrix.python-version }}
+          key: ${{ runner.os }}-${{ hashFiles('AutoBuild-MarlinFirware/common.platform.ini') }}
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
@@ -33,6 +33,6 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Execute platformio install
-        run: pipenv run platformio platform install $(awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/platformio.ini |grep -v '${'|uniq )
+        run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/platformio.ini |grep -v '${'|uniq )
       - name: Execute platformio build
         run: pipenv run platformio run -d AutoBuild-MarlinFirware -e wanhao__d12__230
