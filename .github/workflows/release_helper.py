@@ -16,8 +16,6 @@ def create_assets_archive(directory):
             for fi in files:
                 print(f"Adding mks_font/{fi} to Assets.{assets_name}.zip")
                 myzip.write(os.path.join(root, fi), arcname=f"mks_font/{fi}")
-    # with ZipFile(f'Assets.{assets_name}.zip', 'w') as myzip:
-    #     myzip.write(f"{directory}/Robin_nano.bin", arcname="Robin_nano35.bin")
 
 def create_firmware_archive(directory):
     firmware_name = directory.replace("firmware-", "")
