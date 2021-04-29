@@ -93,9 +93,10 @@ jobs:
           name: assets-{{ matrix.assets_env }}
           path: .build/${{ matrix.assets_env }}
   Create_Release:
-    - uses: actions/download-artifact@v2
-    - name: Display structure of downloaded files
-      run: ls -R
+    steps:
+      - uses: actions/download-artifact@v2
+      - name: Display structure of downloaded files
+        run: ls -R
 
       # - uses: "marvinpinto/action-automatic-releases@latest"
       #   with:
