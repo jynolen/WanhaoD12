@@ -109,14 +109,15 @@ jobs:
       run:
         shell: bash      
     steps:
+      - uses: actions/checkout@v2    
       - uses: actions/download-artifact@v2
-      - name: Display structure of downloaded files
-        run: ls -R
-
-      # - uses: "marvinpinto/action-automatic-releases@latest"
-      #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     prerelease: true
-      #     automatic_release_tag: latest
-      #     files: |
-      #       README.md
+      - name: Create archives
+        run: python .github/workflows/release_helper.py
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          draft: True
+          automatic_release_tag: latest
+          files: |
+            *.zip
