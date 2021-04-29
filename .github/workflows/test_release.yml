@@ -10,10 +10,11 @@ jobs:
     name: "Tagged Release"
     runs-on: "ubuntu-latest"
     steps:
+      - uses: actions/checkout@v2    
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
-          name: README.md
+          name: README.md2
           path: README.md
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
