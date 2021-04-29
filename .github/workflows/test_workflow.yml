@@ -13,6 +13,7 @@ jobs:
   Build_Firmware:
     runs-on: ubuntu-20.04
     strategy:
+      fail-fast: True
       matrix: 
         firmware_env:
           - wanhao__d12__230
