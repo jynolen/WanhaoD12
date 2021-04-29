@@ -12,6 +12,9 @@ on:
 jobs:
   Build_Firmware:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash    
     strategy:
       fail-fast: False
       matrix: 
@@ -63,6 +66,9 @@ jobs:
           path: AutoBuild-MarlinFirware/.pio/build/${{ matrix.firmware_env }}/out/Robin_nano.bin
   Make_Assets:
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
     strategy:
       fail-fast: False
       matrix: 
@@ -97,6 +103,9 @@ jobs:
     needs: 
       - Make_Assets
       - Build_Firmware
+    defaults:
+      run:
+        shell: bash      
     steps:
       - uses: actions/download-artifact@v2
       - name: Display structure of downloaded files
