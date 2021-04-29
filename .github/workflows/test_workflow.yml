@@ -27,4 +27,4 @@ jobs:
       - name: Execute platformio build
         run: |
           cd AutoBuild-MarlinFirware
-          pipenv run platformio pipenv shell run -e wanhao__d12__230
+          pipenv run platformio run -e wanhao__d12__230
