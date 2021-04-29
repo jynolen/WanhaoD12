@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+name: Build Firmware
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+  workflow_dispatch:
+
+jobs:
+  build_firmware:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Print a Welcome Message
+        run: echo Welcome Builder !
+      - name: Execute the pipenv install
+        run: pipenv install
+      - name: Get a shell into the project
+        run: pipenv shell
+      - name: Execute platformio build
+        run: |
+          cd AutoBuild-MarlinFirware
+          platformio pipenv shell run -e wanhao__d12__230
