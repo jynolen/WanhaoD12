@@ -33,6 +33,6 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Execute platformio install
-        run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/platformio.ini |grep -v '${'|uniq )
+        run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/common.platform.ini )
       - name: Execute platformio build
         run: pipenv run platformio run -d AutoBuild-MarlinFirware -e wanhao__d12__230
