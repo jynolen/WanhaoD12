@@ -1,0 +1,70 @@
+# This is a basic workflow to help you get started with Actions
+name: Master Build Firmware and Release
+
+on:
+  push:
+    branches:
+      - *
+    paths:
+      - Assets/**
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  Make_Assets:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      fail-fast: False
+      matrix: 
+        assets_env:
+          - MKS
+          - Wanhao
+          - Community.LeLudoLab
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install minimal deps (pip && pipenv)
+        run:  python -m pip install --upgrade pip pipenv
+      - name: Execute the pipenv install
+        run: pipenv install
+      - name: Make assets
+        run: make -j -f Assets/Makefile $(echo ${{ matrix.assets_env }} |  tr . /)
+      - name: Display structure
+        run: ls -R        
+      - name: Upload ${{ matrix.assets_env }} Assets Compiled
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-${{ matrix.assets_env }}
+          path: .build/*
+  Create_Release:
+    runs-on: ubuntu-20.04
+    needs: 
+      - Make_Assets
+      - Build_Firmware
+    defaults:
+      run:
+        shell: bash      
+    steps:
+      - uses: actions/checkout@v2    
+      - uses: actions/download-artifact@v2
+      - name: Create archives
+        run: python .github/workflows/release_helper.py
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          draft: false
+          automatic_release_tag: latest
+          files: |
+            *.zip
