@@ -5,7 +5,7 @@ on:
   push:
     branches:
     paths:
-      - AutoBuild-MarlinFirware/**
+      - Assets/**
   workflow_dispatch:
   pull_request:
 
