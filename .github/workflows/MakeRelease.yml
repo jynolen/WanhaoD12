@@ -1,4 +1,4 @@
-name: Master Release
+name: Master.Release
 
 on:
   push:
