@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Build the Firmwares
+name: Build Firmware
 
 on:
   push:
@@ -46,24 +46,3 @@ jobs:
         with:
           name: assets-${{ matrix.assets_env }}
           path: .build/*
-  Create_Release:
-    runs-on: ubuntu-20.04
-    needs: 
-      - Make_Assets
-      - Build_Firmware
-    defaults:
-      run:
-        shell: bash      
-    steps:
-      - uses: actions/checkout@v2    
-      - uses: actions/download-artifact@v2
-      - name: Create archives
-        run: python .github/workflows/release_helper.py
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          draft: false
-          automatic_release_tag: latest
-          files: |
-            *.zip
