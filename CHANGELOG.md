@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.2]((https://github.com/jynolen/WanhaoD12/tree/v1.1) (2021-04-30)
+- Fix Bug in Workflow
+- Add more documentation
+- Refactor GH Workflow
 ## [v1.1.1]((https://github.com/jynolen/WanhaoD12/tree/v1.1) (2021-04-30)
 - Fix Bug in Workflow
 - Add more documentation

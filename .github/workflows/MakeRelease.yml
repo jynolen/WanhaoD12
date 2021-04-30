@@ -113,7 +113,9 @@ jobs:
       - name: Create archives
         run: python .github/workflows/release_helper.py
       - name: Generate Changelog
-        run: python .github/workflows/create_changelog.py $(echo ${{github.ref}} | rev | cut -d"/" -f 1| rev ) | tee -a ${{ github.workflow }}-CHANGELOG.md
+        run: python .github/workflows/create_changelog.py $(echo ${{github.ref}} | rev | cut -d"/" -f 1| rev ) > ${{ github.workflow }}-CHANGELOG.md
+      - name: Check Contents
+        run: ls 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
