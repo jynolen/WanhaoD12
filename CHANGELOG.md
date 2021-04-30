@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.1.6]((https://github.com/jynolen/WanhaoD12/tree/v1.1.6) (2021-04-30)
+- Disabling Assets right now. Bored that it's such complicated for nothing
+
 ## [v1.1.5]((https://github.com/jynolen/WanhaoD12/tree/v1.1.5) (2021-04-30)
 - Assets binary generation is a nightmare: PR Welcomed !
 
