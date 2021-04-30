@@ -1,17 +1,44 @@
 # Wanhao D12 Marlin Firmware
-
+---
 Important this repository use git-lfs to store binary data please take this is mind when you clone / pull  push
+
+## First Big Thanks !
+- Ludo from Youtube channel <https://www.youtube.com/c/LeLudoLab> from its 1st firmware try and assets bundle
+- Cidrixx, Jonathan06 from LesImprimantes3D.fr for the time he spends on discord to help me deal with this, and the first tuto available here 
+  - <https://www.lesimprimantes3d.fr/forum/topic/40717-tuto-firmware-personnalis%C3%A9-wanhao-d12-comment-compiler-son-firmware/>
+- Wanhao Teams to make vendors firmware available
+- MKS Teams <https://github.com/makerbase-mks/MKS-Robin-Nano-Firmware>
 
 ## I just wan't an OOTB Firmware
 You don't wan't to build your own firmware ?
-You can download easily our releases OR browse into CommunityFirmware / Vendor-Firmware to download them
-If you download Community or Vendor be sure to grab (mks_font, mks_pic, Robin_nano35.bin and robin_nano35_cfg.txt)
+
+You can download easily our releases or Vendor / Community here :
+- https://github.com/jynolen/WanhaoD12/releases
+  - Go [here](#Environment-Predifined) to be sure which one you want
+- https://github.com/jynolen/WanhaoD12/tree/master/Firmware/Community_Firmware
+- https://github.com/jynolen/WanhaoD12/tree/master/Firmware/Wanhao_Firmware
+
+If you download Community or Vendor be sure to grab:
+  - mks_font directory
+  - mks_pic directory
+  - Robin_nano35.bin file
+  - robin_nano35_cfg.txt file
+
+## How to flash your Wanhao
+
+1. Pick the firmware of your dream it can be download from github releases or directly in Firmware Folder
+2. Pick the assets bundle you want, goto releases and look for Assets.%%.zip
+3. Copy content of zip onto your sd
+4. Copy Firmware on your SD-Card
+5. Insert SD Card into Wanhao D12
+6. Wait and Enjoy
 
 ## How to install build environment
 - System Requirements : 
   - git
   - python3
   - pipenv
+  - libcairo2 (for svg convertion)
 
 ### Install system requirements
 #### Debian/Ubuntu 
@@ -40,17 +67,18 @@ Those commands will download current project and install all dependencies
   > git clone https://github.com/jynolen/WanhaoD12.git
   > cd WanhaoD12
   > PIPENV_VENV_IN_PROJECT="enabled" pipenv install
-  > pipenv shell
-  > cd AutoBuild-MarlinFirware
 ```
 
+## How to compile your own firmware
 ### First compilation (Sanity Build)
-This command should install ststm32 platforme (the board CPU), toolchain (what is needed to compile)
-```
-  > platformio run -e wanhao__d12__230
-```
-After few minutes you should see at the end of the output
+First you should check that what you just cloned works Out of the box. If not you probably have an issue seting up the environement
 
+This command will install ststm32 platforme (the board CPU), toolchain (what is needed to compile)
+```
+  > pipenv run platformio run -e wanhao__d12__230
+```
+7
+After few minutes you should see at the end of the output
 ```
 ====== [SUCCESS] Took 70.88 seconds ======
 
@@ -65,34 +93,21 @@ You can find it directly in folder
 `WanhaoD12/AutoBuild-MarlinFirware/.pio/build/wanhao__d12__230/out/Robin_nano35.bin`
 
 ### How to select a custom firmware
-If you don't have a D12/230 but a D12/300 you want this specific firmware.
+If you don't have a D12/230 but a D12/300 you want the 300 flavor of the firmware.
 No worries we covered you !
 Just replace 230 by 300 in the following CLI
 ```
-  > platformio run -e wanhao__d12__230
-  > # Replaced to 
-  > platformio run -e wanhao__d12__300
+  > pipenv run platformio run -e wanhao__d12__230
+  > # Replaced by 
+  > pipenv run platformio run -e wanhao__d12__300
 ```
 Firmware will be available in folder
 `WanhaoD12/AutoBuild-MarlinFirware/.pio/build/wanhao__d12__300/out/Robin_nano35.bin`
 
-### How to flash your Wanhao
-Pick the firmware of your dream (Community, Vendor, Releases, Selfbuild)
-Be sure to have 
-  - mks_font (not needed for Marlin Stock UI)
-  - mks_pic (not needed for Marlin Stock UI)
-  - Robin_nano35.bin
-  - robin_nano35_cfg.txt  (not needed for Marlin Firware)
-
-Next
-   - Copy each on the root of a SDCard. Please use a good quality SDCard, you don't want to brick your board because of bad SDCard
-   - Be sure to eject it normally
-   - Insert SD into your Power Off Wanhao
-   - Power up
-   - Wait
-   - Enjoy
-
 ### Environment Predifined
+
+Here the list of all predefined firmware that are build by the repository
+
 |         Environment / Features        | Bed Size | BLtouch | Marlin Stock UI | MKS UI | Clean Nozzles | Materials Preheat | Custom User Commands | GCode Macros | Skew Compensation |
 |:-------------------------------------:|----------|---------|-----------------|--------|---------------|-------------------|----------------------|--------------|-------------------|
 | wanhao__d12__230                      | 230      |         | yes             |        |               |                   |                      |              |                   |
@@ -160,13 +175,25 @@ extends         = mks_robin_nano35
 build_flags     = ${mks_robin_nano35.build_flags} -DFOOBAR
 ```
 
-#### Buit it !
+#### Built it !
 You can now built it with 
 ```
-  > platformio run -e custom
+  > pipenv run platformio run -e custom
 ```
 
 
-# Credit:
+## How to contribute to this project
 
-https://github.com/IQAndreas/sample-images
+Collaboration is welcome ! Just fork the repository make your change and pull request.
+"Ok not so simple"
+1. Create a github account
+2. Click Fork on top right of the repository landing page
+3. Cloned your forked repo
+4. Create a branch with command
+   1. `git checkout -b <name of your branch>`
+5. Make whatever you want
+6. Create a pull requests
+
+## Next things to do
+- Include Slicers Profiles
+- ...
