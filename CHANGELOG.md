@@ -1,14 +1,17 @@
 # Changelog
 
-## [v1.1.3]((https://github.com/jynolen/WanhaoD12/tree/v1.1) (2021-04-30)
+## [v1.1.4]((https://github.com/jynolen/WanhaoD12/tree/v1.1.4) (2021-04-30)
+- Garbage In - Garbage Out - SVG Files where in pt instead of px
+
+## [v1.1.3]((https://github.com/jynolen/WanhaoD12/tree/v1.1.3) (2021-04-30)
 - Fix Bug in Workflow
 - Add more documentation
 - Refactor GH Workflow
-## [v1.1.2]((https://github.com/jynolen/WanhaoD12/tree/v1.1) (2021-04-30)
+## [v1.1.2]((https://github.com/jynolen/WanhaoD12/tree/v1.1.2) (2021-04-30)
 - Fix Bug in Workflow
 - Add more documentation
 - Refactor GH Workflow
-## [v1.1.1]((https://github.com/jynolen/WanhaoD12/tree/v1.1) (2021-04-30)
+## [v1.1.1]((https://github.com/jynolen/WanhaoD12/tree/v1.1.1) (2021-04-30)
 - Fix Bug in Workflow
 - Add more documentation
 - Refactor GH Workflow
