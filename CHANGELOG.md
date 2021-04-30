@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.1.5]((https://github.com/jynolen/WanhaoD12/tree/v1.1.5) (2021-04-30)
+- Assets binary generation is a nightmare: PR Welcomed !
+
 ## [v1.1.4]((https://github.com/jynolen/WanhaoD12/tree/v1.1.4) (2021-04-30)
 - Garbage In - Garbage Out - SVG Files where in pt instead of px
 
