@@ -117,20 +117,20 @@ Here the list of all predefined firmware that are build by the repository
 | wanhao__d12__230                      | 230      |         | yes             |        |               |                   |                      |              |                   |
 | wanhao__d12__230__bltouch             | 230      | Yes     | yes             |        |               |                   |                      |              |                   |
 | wanhao__d12__230__full                | 230      |         | yes             |        | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__230__full                | 300      | Yes     | yes             |        | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__230                      | 300      |         | yes             |        |               |                   |                      |              |                   |
-| wanhao__d12__230__bltouch             | 300      | Yes     | yes             |        |               |                   |                      |              |                   |
-| wanhao__d12__230__full                | 300      |         | yes             |        | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__230__full                | 300      | Yes     | yes             |        | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__230__full__bltouch       | 230      | Yes     | yes             |        | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__300                      | 300      |         | yes             |        |               |                   |                      |              |                   |
+| wanhao__d12__300__bltouch             | 300      | Yes     | yes             |        |               |                   |                      |              |                   |
+| wanhao__d12__300__full                | 300      |         | yes             |        | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__300__full__bltouch       | 300      | Yes     | yes             |        | yes           | yes               | yes                  | yes          |                   |
 |                                       |          |         |                 |        |               |                   |                      |              |                   |
 | wanhao__d12__lvgl__230                | 230      |         |                 | yes    |               |                   |                      |              |                   |
 | wanhao__d12__lvgl__230__bltouch       | 230      | Yes     |                 | yes    |               |                   |                      |              |                   |
 | wanhao__d12__lvgl__230__full          | 230      |         |                 | yes    | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__lvgl__230__full__bltouch | 230      |         |                 | yes    | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__lvgl__300                | 300      | Yes     |                 | yes    | yes           | yes               | yes                  | yes          |                   |
-| wanhao__d12__lvgl__300__bltouch       | 300      |         |                 | yes    |               |                   |                      |              |                   |
-| wanhao__d12__lvgl__300__full          | 300      | Yes     |                 | yes    |               |                   |                      |              |                   |
-| wanhao__d12__lvgl__300__full__bltouch | 300      |         |                 | yes    | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__lvgl__230__full__bltouch | 230      | Yes     |                 | yes    | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__lvgl__300                | 300      |         |                 | yes    | yes           | yes               | yes                  | yes          |                   |
+| wanhao__d12__lvgl__300__bltouch       | 300      | Yes     |                 | yes    |               |                   |                      |              |                   |
+| wanhao__d12__lvgl__300__full          | 300      |         |                 | yes    |               |                   |                      |              |                   |
+| wanhao__d12__lvgl__300__full__bltouch | 300      | Yes     |                 | yes    | yes           | yes               | yes                  | yes          |                   |
 
 ### Extra Features
 - Clean Nozzles
