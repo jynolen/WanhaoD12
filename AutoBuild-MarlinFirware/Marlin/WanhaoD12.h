@@ -159,6 +159,14 @@
 #define WD12_DEFAULT_STEPPER_DEACTIVE_TIME 600
 #define LIN_ADVANCE
 #define WD12_LIN_ADVANCE_K 0
+
+#define WD12_INVERT_X_DIR false
+#define WD12_INVERT_Y_DIR true
+#define WD12_INVERT_Z_DIR true
+
+
+#define WD12_INVERT_E0_DIR  true
+#define WD12_INVERT_E1_DIR  true
 #endif
 
 /**

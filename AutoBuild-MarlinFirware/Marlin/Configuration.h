@@ -1088,15 +1088,15 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_X_DIR WD12_INVERT_X_DIR
+#define INVERT_Y_DIR WD12_INVERT_Y_DIR
+#define INVERT_Z_DIR WD12_INVERT_Z_DIR         
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
-#define INVERT_E1_DIR false
+#define INVERT_E0_DIR WD12_INVERT_E0_DIR
+#define INVERT_E1_DIR WD12_INVERT_E1_DIR
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
