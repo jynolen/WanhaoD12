@@ -4,7 +4,6 @@ name: Build Assets
 on:
   push:
     branches:
-      - *
     paths:
       - AutoBuild-MarlinFirware/**
   workflow_dispatch:

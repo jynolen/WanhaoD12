@@ -4,7 +4,6 @@ name: Build the Firmwares
 on:
   push:
     branches:
-      - *
     paths:
       - Assets/**
   workflow_dispatch:
