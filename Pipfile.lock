@@ -334,11 +334,11 @@
                 "svg"
             ],
             "hashes": [
-                "sha256:4655867c62291de0cf6184ad5d7cd11d4844d20b503b8553f023a8e585a3af8b",
-                "sha256:d82ec943099650dcdef6c4d0c83a55008e466f25134bd2484d9603b7428da68a"
+                "sha256:0d263b5556594b11f7c0f6c9427c477afbbedd4c7d6cd7e280f40ed3d7004ae8",
+                "sha256:5debdb904b21f732ee98914070e47bc41abbca45851c23db868468051670e53e"
             ],
             "index": "pypi",
-            "version": "==1.0"
+            "version": "==1.1"
         },
         "pyserial": {
             "hashes": [
@@ -435,11 +435,11 @@
         },
         "autopep8": {
             "hashes": [
-                "sha256:5454e6e9a3d02aae38f866eec0d9a7de4ab9f93c10a273fb0340f3d6d09f7514",
-                "sha256:f01b06a6808bc31698db907761e5890eb2295e287af53f6693b39ce55454034a"
+                "sha256:276ced7e9e3cb22e5d7c14748384a5cf5d9002257c0ed50c0e075b68011bb6d0",
+                "sha256:aa213493c30dcdac99537249ee65b24af0b2c29f2e83cd8b3f68760441ed0db9"
             ],
             "index": "pypi",
-            "version": "==1.5.6"
+            "version": "==1.5.7"
         },
         "isort": {
             "hashes": [
