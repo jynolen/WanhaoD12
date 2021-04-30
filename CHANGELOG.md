@@ -1,5 +1,7 @@
 # Changelog
 
+## [v1.2.1]((https://github.com/jynolen/WanhaoD12/tree/v1.2.1) (2021-04-30)
+- WD230 and WD300 have difference in StepMotors direction
 ## [v1.2]((https://github.com/jynolen/WanhaoD12/tree/v1.2) (2021-04-30)
 - Changing direction of motors
 
