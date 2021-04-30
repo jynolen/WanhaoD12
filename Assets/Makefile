@@ -16,7 +16,7 @@ $(TGT_FILES):
 	$(eval S_FILE=$(notdir $(patsubst %.bin,%.svg,$@)))
 	$(eval S_FOLDER=$(dir $(subst $(TARGET_DIR),,$@)))
 	$(eval S_FILE=$(shell find -name $(S_FILE)|grep $(S_FOLDER) ))
-	pipenv run python -m lvgl.converter --output_format bin_565 --color_format true_color $(S_FILE)
+	pipenv run python -m lvgl.converter --output_format bin_565_mks --color_format true_color $(S_FILE)
 	@mv $(notdir $@) $@
 
 .SECONDEXPANSION:
