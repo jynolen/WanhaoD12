@@ -92,11 +92,11 @@ jobs:
         run: make -j -f Assets/Makefile $(echo ${{ matrix.assets_env }} |  tr . /)
       - name: Display structure
         run: ls -R        
-      - name: Upload ${{ matrix.assets_env }} Assets Compiled
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets-${{ matrix.assets_env }}
-          path: .build/*
+      # - name: Upload ${{ matrix.assets_env }} Assets Compiled
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: assets-${{ matrix.assets_env }}
+      #     path: .build/*
   Create_Release:
     runs-on: ubuntu-20.04
     needs: 

@@ -35,20 +35,7 @@ If you download Community or Vendor be sure to grab:
 
 
 ## How to convert Assets for my Wanhao
-You will see that Assets folder contains png image.
-This is not images suitable for your printer you will have to convert them.
-- First choose the bundle you want 
-- Download and extract the zip somewhere
-- Go to https://baizhongyun.cn/home/mkstoolview
-  - Board Series : MKS Robin Series
-  - Board Type: MKS Robin Nano V1.x-TFT32
-  - Firmware Type: MKS Robin Nano-V1.x-TFT35-Marlin-2.0.6
-- Import the folder you just extract
-  - Make sure all image load perfectly
-- Go to Export
-  - Select Display UI
-  - Font Family
-- Export And Extract mksbin.zip on your sd card
+Not available right now
 
 ## How to install build environment
 - System Requirements : 
