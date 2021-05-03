@@ -77,26 +77,12 @@
 #define WD12_HEATER_0_MAXTEMP 245 // #WD12 Wanhao D12-230 has a heated bed 
 #define WD12_BED_MAXTEMP 100 // #WD12 Wanhao D12-230 has a heated bed 
 
-#define WD12_DEFAULT_Kp_LIST {  17.54,  17.54 }
-#define WD12_DEFAULT_Ki_LIST {   0.73,   0.73 }
-#define WD12_DEFAULT_Kd_LIST { 105.35, 105.35 }
-
-#define WD12_DEFAULT_Kp 27.35
-#define WD12_DEFAULT_Ki 1.71
-#define WD12_DEFAULT_Kd 109.14
-
 #define WD12_EXTRUDE_MAXLENGTH 600 // #Bowden
 
 //#define PIDTEMPBED // If you want to be able to PID tune the Bed
-#define WD12_DEFAULT_bedKp  18.24 	// #WD12
-#define WD12_DEFAULT_bedKi  3.45 	// #WD12
-#define WD12_DEFAULT_bedKd  64.36	// #WD12
 
 #define WD12_X_DRIVER_TYPE TMC2209_STANDALONE // #WD12 TMC2209_STANDALONE on stock D12-230
 #define WD12_Y_DRIVER_TYPE TMC2209_STANDALONE // #WD12 TMC2209_STANDALONE on stock D12-230
-#define WD12_Z_DRIVER_TYPE A4988				// #WD12
-#define WD12_E0_DRIVER_TYPE A4988			// #WD12
-#define WD12_E1_DRIVER_TYPE A4988			// #WD12
 
 #define DISTINCT_E_FACTORS // If you want to have different values for each extruder
 #define WD12_DEFAULT_AXIS_STEPS_PER_UNIT   { 80.00, 80.00, 400.50, 381, 381 }
@@ -111,6 +97,15 @@
 #define WD12_DEFAULT_ACCELERATION          500    // #WD12 X, Y, Z and E acceleration for printing moves
 #define WD12_DEFAULT_RETRACT_ACCELERATION  500    // #WD12 E acceleration for retracts
 #define WD12_DEFAULT_TRAVEL_ACCELERATION   500    // #WD12 X, Y, Z acceleration for travel (non printing) moves
+
+
+#define WD12_DEFAULT_Kp_LIST {  27.35,  27.35 }
+#define WD12_DEFAULT_Ki_LIST {   1.71,   1.71 }
+#define WD12_DEFAULT_Kd_LIST { 109.14, 109.14 }
+
+#define WD12_DEFAULT_Kp 27.35
+#define WD12_DEFAULT_Ki 1.71
+#define WD12_DEFAULT_Kd 109.14
 
 #define CLASSIC_JERK
 #define WD12_DEFAULT_XJERK 10.0 // #WD12
@@ -202,13 +197,16 @@
 #define WD12_INVERT_X_DIR false
 #define WD12_INVERT_Y_DIR true
 #define WD12_INVERT_Z_DIR true
-#define WD12_DEFAULT_bedKp  10.00 	// #WD12
-#define WD12_DEFAULT_bedKi  0.023 	// #WD12
-#define WD12_DEFAULT_bedKd  305.4	// #WD12
+
 
 #define WD12_Z_DRIVER_TYPE A4988				// #WD12
 #define WD12_E0_DRIVER_TYPE A4988			// #WD12
 #define WD12_E1_DRIVER_TYPE A4988			// #WD12
+
+
+#define WD12_DEFAULT_bedKp  10.00 	// #WD12-230
+#define WD12_DEFAULT_bedKi  0.023 	// #WD12-230
+#define WD12_DEFAULT_bedKd  305.4	// #WD12-230
 
 #endif
 
