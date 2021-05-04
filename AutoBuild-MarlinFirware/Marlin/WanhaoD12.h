@@ -69,7 +69,7 @@
 
 #define WD12_SERIALPORT 3
 #define WD12_BAUDRATE 250000
-#define WD12_MOTHERBOARD BOARD_MKS_ROBIN_NANO
+#define MOTHERBOARD BOARD_MKS_ROBIN_NANO
 #define WD12_EXTRUDERS 2 // #WD12 Wanhao D12-230 has 2 extruders
 #define SINGLENOZZLE // #WD12 Wanhao D12-230 has a shared nozzle
 #define WD12_TEMP_SENSOR_0 1
@@ -132,7 +132,7 @@
 //#define SD_CHECK_AND_RETRY
 
 #define MKS_ROBIN_TFT35
-#define SERVO_DELAY { 750 }
+#define WD12_SERVO_DELAY { 750 }
 
 /**
  * Materials
@@ -190,6 +190,7 @@
 #define WD12_X_BED_SIZE 230 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_Y_BED_SIZE 230 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_X_MAX_POS 256   // WD12 X_BED_SIZE
+#define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 240
 #define WD12_LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
@@ -215,6 +216,7 @@
 #define WD12_X_BED_SIZE 300 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_Y_BED_SIZE 300 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_X_MAX_POS 300   // WD12 X_BED_SIZE
+#define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 400
 #define WD12_LEVEL_CORNERS_INSET_LFRB { 40, 40, 40, 40 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
@@ -235,6 +237,7 @@
  */
 #ifdef WD12_UI_TYPE_MARLIN_STOCK
 #define WD12_FILAMENT_RUNOUT_SCRIPT "M600"
+#define MKS_ROBIN_TFT35
 #define TFT_COLOR_UI
 #define TOUCH_SCREEN
 #define ADVANCED_PAUSE_FEATURE
@@ -243,7 +246,9 @@
 
 #ifdef WD12_UI_TYPE_TFT_LVGL
 #define WD12_FILAMENT_RUNOUT_SCRIPT "M600"
+#define MKS_ROBIN_TFT35
 #define TFT_LVGL_UI
+#define MKS_WIFI_MODULE
 #endif
 
 /**
@@ -294,6 +299,7 @@
  * Custom Menus
  */
 #ifdef WD12_CUSTOM_USER_MENUS
+// TODO : Migrate This to Marlin 2.0.8
 #define WD12_CUSTOM_USER_MENU_TITLE "Custom WD12 Commands"
 #define WD12_USER_SCRIPT_DONE "M117 User Script Done"
 
