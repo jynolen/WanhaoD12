@@ -192,7 +192,7 @@
 #define WD12_X_MAX_POS 256   // WD12 X_BED_SIZE
 #define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 240
-#define WD12_LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+#define WD12_LEVEL_CORNERS_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
 #define WD12_NOZZLE_CLEAN_END_POINT { { 60, 20, (Z_MIN_POS + 1) } }
 #define WD12_INVERT_X_DIR false
@@ -218,7 +218,7 @@
 #define WD12_X_MAX_POS 300   // WD12 X_BED_SIZE
 #define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 400
-#define WD12_LEVEL_CORNERS_INSET_LFRB { 40, 40, 40, 40 } // (mm) Left, Front, Right, Back insets
+#define WD12_LEVEL_CORNERS_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
 #define WD12_NOZZLE_CLEAN_END_POINT { { 80, 30, (Z_MIN_POS + 1) } }
 #define WD12_INVERT_X_DIR false
