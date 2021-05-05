@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: assets-${{ matrix.assets_env }}
-          path: .build/*.bin
+          path: .build/${{ matrix.assets_env }}/*.bin
   Fake_Create_Release:
     runs-on: ubuntu-20.04
     needs:

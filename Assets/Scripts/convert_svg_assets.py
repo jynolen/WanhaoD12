@@ -27,6 +27,7 @@ for file in input_dir.iterdir():
         continue
     with ouput_dir.joinpath(".png", file.name.replace("svg", "png")).open("wb") as fw:
         fw.write(svg2png(file_obj=file.open()))
+    print(f"{file.name} converted")
 
 
 # Second convert all png into bin
@@ -48,6 +49,7 @@ for file in ouput_dir.joinpath(".png").iterdir():
                 r, g, b = current_pixel[0] >> 3, current_pixel[1] >> 2, current_pixel[2] >> 3
                 rgb = (r << 11) | (g << 5) | b
                 fw.write(struct.pack('H', rgb))
+    print(f"{file.name} converted")
 
 ### Make sure every image define in code are present in output dir
 failed = False
