@@ -6,6 +6,7 @@ on:
     tags-ignore:
       - '*' # We don't want this to run on release
     branches:
+      - "*"
     paths:
       - Assets/**
   workflow_dispatch:
@@ -42,7 +43,7 @@ jobs:
       - name: Make assets
         run: pipenv run python Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
       - name: Display structure
-        run: ls -R
+        run: ls -R .build/
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
@@ -63,4 +64,4 @@ jobs:
       - name: Create archives
         run: python .github/workflows/release_helper.py
       - name: Check Contents
-        run: ls -R
+        run: ls -R 
