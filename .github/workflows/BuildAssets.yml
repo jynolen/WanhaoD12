@@ -52,7 +52,6 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - Make_Assets
-      - Build_Firmware
     defaults:
       run:
         shell: bash
