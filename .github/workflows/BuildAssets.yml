@@ -40,7 +40,7 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Make assets
-        run: pipenv run Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
+        run: pipenv run python Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
       - name: Display structure
         run: ls -R
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
