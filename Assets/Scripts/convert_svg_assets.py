@@ -24,7 +24,7 @@ for file in input_dir.iterdir():
     if not file.name.endswith(".svg"):
         continue
     if ouput_dir.joinpath(".png", file.name.replace("svg", "png")).exists():
-        continue    
+        continue
     with ouput_dir.joinpath(".png", file.name.replace("svg", "png")).open("wb") as fw:
         fw.write(svg2png(file_obj=file.open()))
 
@@ -37,7 +37,7 @@ for file in ouput_dir.joinpath(".png").iterdir():
     pixs = img.load()
     width, height = img.size
     if ouput_dir.joinpath(file.name.replace(".png", ".bin")).exists():
-        continue    
+        continue
     with open(ouput_dir.joinpath(file.name.replace(".png", ".bin")), "wb") as fw:
 
         if include_header:

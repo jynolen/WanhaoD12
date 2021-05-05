@@ -64,7 +64,7 @@ for file in input_dir.iterdir():
         picheight = header_only_hw >> 21
         picwidth = (header_only_hw >> 10) & 0x3ff
         has_header = True
-    
+
     image = Image.new('RGB', (picwidth, picheight))
     pixel_coord = itertools.product(range(picheight),range(picwidth))
 
