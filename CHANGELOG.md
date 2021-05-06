@@ -1,5 +1,11 @@
 # Changelog
 
+
+## [v1.3.1]((https://github.com/jynolen/WanhaoD12/tree/v1.3.1) (2021-04-30)
+- Forgot to drop duplicates
+## [v1.3.0]((https://github.com/jynolen/WanhaoD12/tree/v1.3.0) (2021-04-30)
+- Revert WD12 default driver for Z
+
 ## [v1.2.2]((https://github.com/jynolen/WanhaoD12/tree/v1.2.1) (2021-04-30)
 - Rollback to vendor parameters and add some todo 
 

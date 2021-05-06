@@ -69,7 +69,7 @@
 
 #define WD12_SERIALPORT 3
 #define WD12_BAUDRATE 250000
-#define WD12_MOTHERBOARD BOARD_MKS_ROBIN_NANO
+#define MOTHERBOARD BOARD_MKS_ROBIN_NANO
 #define WD12_EXTRUDERS 2 // #WD12 Wanhao D12-230 has 2 extruders
 #define SINGLENOZZLE // #WD12 Wanhao D12-230 has a shared nozzle
 #define WD12_TEMP_SENSOR_0 1
@@ -77,26 +77,12 @@
 #define WD12_HEATER_0_MAXTEMP 245 // #WD12 Wanhao D12-230 has a heated bed 
 #define WD12_BED_MAXTEMP 100 // #WD12 Wanhao D12-230 has a heated bed 
 
-#define WD12_DEFAULT_Kp_LIST {  17.54,  17.54 }
-#define WD12_DEFAULT_Ki_LIST {   0.73,   0.73 }
-#define WD12_DEFAULT_Kd_LIST { 105.35, 105.35 }
-
-#define WD12_DEFAULT_Kp 27.35
-#define WD12_DEFAULT_Ki 1.71
-#define WD12_DEFAULT_Kd 109.14
-
 #define WD12_EXTRUDE_MAXLENGTH 600 // #Bowden
 
 //#define PIDTEMPBED // If you want to be able to PID tune the Bed
-#define WD12_DEFAULT_bedKp  18.24 	// #WD12
-#define WD12_DEFAULT_bedKi  3.45 	// #WD12
-#define WD12_DEFAULT_bedKd  64.36	// #WD12
 
 #define WD12_X_DRIVER_TYPE TMC2209_STANDALONE // #WD12 TMC2209_STANDALONE on stock D12-230
 #define WD12_Y_DRIVER_TYPE TMC2209_STANDALONE // #WD12 TMC2209_STANDALONE on stock D12-230
-#define WD12_Z_DRIVER_TYPE A4988				// #WD12
-#define WD12_E0_DRIVER_TYPE A4988			// #WD12
-#define WD12_E1_DRIVER_TYPE A4988			// #WD12
 
 #define DISTINCT_E_FACTORS // If you want to have different values for each extruder
 #define WD12_DEFAULT_AXIS_STEPS_PER_UNIT   { 80.00, 80.00, 400.50, 381, 381 }
@@ -111,6 +97,15 @@
 #define WD12_DEFAULT_ACCELERATION          500    // #WD12 X, Y, Z and E acceleration for printing moves
 #define WD12_DEFAULT_RETRACT_ACCELERATION  500    // #WD12 E acceleration for retracts
 #define WD12_DEFAULT_TRAVEL_ACCELERATION   500    // #WD12 X, Y, Z acceleration for travel (non printing) moves
+
+
+#define WD12_DEFAULT_Kp_LIST {  27.35,  27.35 }
+#define WD12_DEFAULT_Ki_LIST {   1.71,   1.71 }
+#define WD12_DEFAULT_Kd_LIST { 109.14, 109.14 }
+
+#define WD12_DEFAULT_Kp 27.35
+#define WD12_DEFAULT_Ki 1.71
+#define WD12_DEFAULT_Kd 109.14
 
 #define CLASSIC_JERK
 #define WD12_DEFAULT_XJERK 10.0 // #WD12
@@ -137,7 +132,7 @@
 //#define SD_CHECK_AND_RETRY
 
 #define MKS_ROBIN_TFT35
-#define SERVO_DELAY { 750 }
+#define WD12_SERVO_DELAY { 750 }
 
 /**
  * Materials
@@ -195,16 +190,25 @@
 #define WD12_X_BED_SIZE 230 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_Y_BED_SIZE 230 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_X_MAX_POS 256   // WD12 X_BED_SIZE
+#define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 240
-#define WD12_LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
+#define WD12_LEVEL_CORNERS_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
 #define WD12_NOZZLE_CLEAN_END_POINT { { 60, 20, (Z_MIN_POS + 1) } }
 #define WD12_INVERT_X_DIR false
 #define WD12_INVERT_Y_DIR true
 #define WD12_INVERT_Z_DIR true
-#define WD12_DEFAULT_bedKp  10.00 	// #WD12
-#define WD12_DEFAULT_bedKi  0.023 	// #WD12
-#define WD12_DEFAULT_bedKd  305.4	// #WD12
+
+
+#define WD12_Z_DRIVER_TYPE A4988				// #WD12
+#define WD12_E0_DRIVER_TYPE A4988			// #WD12
+#define WD12_E1_DRIVER_TYPE A4988			// #WD12
+
+
+#define WD12_DEFAULT_bedKp  10.00 	// #WD12-230
+#define WD12_DEFAULT_bedKi  0.023 	// #WD12-230
+#define WD12_DEFAULT_bedKd  305.4	// #WD12-230
+
 #endif
 
 #ifdef D12300
@@ -212,8 +216,9 @@
 #define WD12_X_BED_SIZE 300 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_Y_BED_SIZE 300 // #WD12 Wanhao D12-230 has a 230mm x 230mm Bed
 #define WD12_X_MAX_POS 300   // WD12 X_BED_SIZE
+#define WD12_Y_MAX_POS WD12_Y_BED_SIZE
 #define WD12_Z_MAX_POS 400
-#define WD12_LEVEL_CORNERS_INSET_LFRB { 40, 40, 40, 40 } // (mm) Left, Front, Right, Back insets
+#define WD12_LEVEL_CORNERS_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
 #define WD12_NOZZLE_CLEAN_START_POINT { {  5, 5, (Z_MIN_POS + 1) } }
 #define WD12_NOZZLE_CLEAN_END_POINT { { 80, 30, (Z_MIN_POS + 1) } }
 #define WD12_INVERT_X_DIR false
@@ -222,6 +227,9 @@
 #define WD12_DEFAULT_bedKp  10.00 	// #WD12
 #define WD12_DEFAULT_bedKi  0.023 	// #WD12
 #define WD12_DEFAULT_bedKd  305.4	// #WD12
+#define WD12_Z_DRIVER_TYPE TMC2209_STANDALONE
+#define WD12_E0_DRIVER_TYPE A4988			// #WD12
+#define WD12_E1_DRIVER_TYPE A4988			// #WD12
 #endif
 
 /**
@@ -229,6 +237,7 @@
  */
 #ifdef WD12_UI_TYPE_MARLIN_STOCK
 #define WD12_FILAMENT_RUNOUT_SCRIPT "M600"
+#define MKS_ROBIN_TFT35
 #define TFT_COLOR_UI
 #define TOUCH_SCREEN
 #define ADVANCED_PAUSE_FEATURE
@@ -237,7 +246,9 @@
 
 #ifdef WD12_UI_TYPE_TFT_LVGL
 #define WD12_FILAMENT_RUNOUT_SCRIPT "M600"
+#define MKS_ROBIN_TFT35
 #define TFT_LVGL_UI
+#define MKS_WIFI_MODULE
 #endif
 
 /**
@@ -288,6 +299,7 @@
  * Custom Menus
  */
 #ifdef WD12_CUSTOM_USER_MENUS
+// TODO : Migrate This to Marlin 2.0.8
 #define WD12_CUSTOM_USER_MENU_TITLE "Custom WD12 Commands"
 #define WD12_USER_SCRIPT_DONE "M117 User Script Done"
 
