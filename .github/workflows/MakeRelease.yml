@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: firmware-${{ matrix.firmware_env }}
-          path: AutoBuild-MarlinFirware/.pio/build/${{ matrix.firmware_env }}/out/Robin_nano.bin
+          path: AutoBuild-MarlinFirware/.pio/build/${{ matrix.firmware_env }}/Robin_nano35.bin
   Make_Assets:
     runs-on: ubuntu-20.04
     defaults:

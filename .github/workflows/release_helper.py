@@ -21,7 +21,7 @@ def create_firmware_archive(directory):
     firmware_name = directory.replace("firmware-", "")
     print(f"Creating {firmware_name}.zip for folder {directory}")
     with ZipFile(f'{firmware_name}.zip', 'w') as myzip:
-        myzip.write(f"{directory}/Robin_nano.bin", arcname="Robin_nano35.bin")
+        myzip.write(f"{directory}/Robin_nano35.bin", arcname="Robin_nano35.bin")
 
 for directory in os.listdir("."):
     if directory.startswith("assets-"):
