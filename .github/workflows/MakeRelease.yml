@@ -37,7 +37,7 @@ jobs:
       - name: Cache pip
         uses: actions/cache@v2
         with:
-          path: ~/.local/share/virtualenvs
+          path: ~/work/WanhaoD12/WanhaoD12/.venv
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Cache PlatformIO
         uses: actions/cache@v2
@@ -51,7 +51,7 @@ jobs:
       - name: Install minimal deps (pip && pipenv)
         run:  python -m pip install --upgrade pip pipenv
       - name: Execute the pipenv install
-        run: pipenv install
+        run: PIPENV_VENV_IN_PROJECT=1 pipenv install
       - name: Execute platformio install
         run: pipenv run platformio platform install $( awk -F "=" '/platform\s/ {print $2}' AutoBuild-MarlinFirware/common.platform.ini )
       - name: Execute platformio build
@@ -78,7 +78,7 @@ jobs:
       - name: Cache pip
         uses: actions/cache@v2
         with:
-          path: ~/.local/share/virtualenvs
+          path: ~/work/WanhaoD12/WanhaoD12/.venv
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -87,16 +87,16 @@ jobs:
       - name: Install minimal deps (pip && pipenv)
         run:  python -m pip install --upgrade pip pipenv
       - name: Execute the pipenv install
-        run: pipenv install
+        run: PIPENV_VENV_IN_PROJECT=1 pipenv install
       - name: Make assets
-        run: pipenv run Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
+        run: pipenv run python Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
       - name: Display structure
         run: ls -R
-      # - name: Upload ${{ matrix.assets_env }} Assets Compiled
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: assets-${{ matrix.assets_env }}
-      #     path: .build/${{ matrix.assets_env }}/*.bin
+      - name: Upload ${{ matrix.assets_env }} Assets Compiled
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets-${{ matrix.assets_env }}
+          path: .build/${{ matrix.assets_env }}/*.bin
   Create_Release:
     runs-on: ubuntu-20.04
     needs:
