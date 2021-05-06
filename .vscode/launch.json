@@ -2,11 +2,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: png2bin",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "program": "Assets/png2bin.py",
+            "console": "integratedTerminal",
+            "args": [
+                ".build/MKS/png",
+                ".build/MKS/bin"
+            ]
+        },
+        {
+            "name": "Python: bin2png",
+            "type": "python",
+            "request": "launch",
+            "program": "Assets/bin2png.py",
+            "console": "integratedTerminal",
+            "args": [
+                ".build/MKS/mks_pic",
+                ".build/MKS/mks_png"
+            ]
         }
     ]
 }

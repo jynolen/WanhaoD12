@@ -6,6 +6,7 @@ on:
     tags-ignore:
       - '*' # We don't want this to run on release
     branches:
+      - "*"
     paths:
       - Assets/**
   workflow_dispatch:
@@ -19,7 +20,7 @@ jobs:
         shell: bash
     strategy:
       fail-fast: False
-      matrix: 
+      matrix:
         assets_env:
           - MKS
           - Wanhao
@@ -40,11 +41,27 @@ jobs:
       - name: Execute the pipenv install
         run: pipenv install
       - name: Make assets
-        run: make -j -f Assets/Makefile $(echo ${{ matrix.assets_env }} |  tr . /)
+        run: pipenv run python Assets/Scripts/convert_svg_assets.py Assets/$(echo ${{ matrix.assets_env }} |  tr . /)/Marlin/svg/ .build/${{ matrix.assets_env }} --header
       - name: Display structure
-        run: ls -R        
+        run: ls -R .build/
       - name: Upload ${{ matrix.assets_env }} Assets Compiled
         uses: actions/upload-artifact@v2
         with:
           name: assets-${{ matrix.assets_env }}
-          path: .build/*
+          path: .build/${{ matrix.assets_env }}/*.bin
+  Fake_Create_Release:
+    runs-on: ubuntu-20.04
+    needs:
+      - Make_Assets
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download Artefact
+        uses: actions/download-artifact@v2
+      - name: Create archives
+        run: python .github/workflows/release_helper.py
+      - name: Check Contents
+        run: ls -R 

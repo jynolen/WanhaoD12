@@ -4,7 +4,7 @@ name: Build Firmware
 on:
   push:
     tags-ignore:
-      - 'v*' # We don't want this to run on release  
+      - '*' # We don't want this to run on release
     branches:
       - "*"
     paths:
@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-20.04
     defaults:
       run:
-        shell: bash    
+        shell: bash
     strategy:
       fail-fast: False
-      matrix: 
+      matrix:
         firmware_env:
           - wanhao__d12__230
           - wanhao__d12__230__bltouch
