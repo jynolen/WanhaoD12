@@ -1,5 +1,8 @@
 # Changelog
 
+## [v1.4.0]((https://github.com/jynolen/WanhaoD12/tree/v1.4.0) (2021-04-30)
+- Rework on assets
+- Upgrade Marlin to v2.0.8
 
 ## [v1.3.1]((https://github.com/jynolen/WanhaoD12/tree/v1.3.1) (2021-04-30)
 - Forgot to drop duplicates
