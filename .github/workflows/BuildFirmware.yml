@@ -40,6 +40,8 @@ jobs:
           - wanhao__d12__lvgl__300__full__bltouch
     steps:
       - uses: actions/checkout@v2
+        with:
+          lfs: true
       - name: Cache pip
         uses: actions/cache@v2
         with:

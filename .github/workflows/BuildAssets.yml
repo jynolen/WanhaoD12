@@ -27,6 +27,8 @@ jobs:
           - Community.LeLudoLab
     steps:
       - uses: actions/checkout@v2
+        with:
+          lfs: true
       - name: Cache pip
         uses: actions/cache@v2
         with:
@@ -59,6 +61,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          lfs: true        
       - name: Download Artefact
         uses: actions/download-artifact@v2
       - name: Create archives

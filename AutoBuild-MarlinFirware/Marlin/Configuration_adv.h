@@ -239,7 +239,7 @@
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
   #define THERMAL_PROTECTION_PERIOD 40        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS WD12_THERMAL_PROTECTION_HYSTERESIS // Set in WanhaoD12.h    // Degrees Celsius
+  #define THERMAL_PROTECTION_HYSTERESIS WD12_THERMAL_PROTECTION_HYSTERESIS    // Degrees Celsius
 
   //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
@@ -258,7 +258,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD  WD12_WATCH_TEMP_PERIOD  // Set in WanhaoD12.h
+  #define WATCH_TEMP_PERIOD  WD12_WATCH_TEMP_PERIOD               // Seconds
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
@@ -266,7 +266,7 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        WD12_THERMAL_PROTECTION_BED_PERIOD  // Set in WanhaoD12.h
+  #define THERMAL_PROTECTION_BED_PERIOD        WD12_THERMAL_PROTECTION_BED_PERIOD // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
 
   /**
@@ -766,7 +766,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  #define BLTOUCH_DELAY WD12_BLTOUCH_DELAY // Set in WanhaoD12.h
+  //#define BLTOUCH_DELAY 500
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -925,7 +925,7 @@
  * Set DISABLE_INACTIVE_? 'true' to shut down axis steppers after an idle period.
  * The Deactive Time can be overridden with M18 and M84. Set to 0 for No Timeout.
  */
-#define DEFAULT_STEPPER_DEACTIVE_TIME WD12_DEFAULT_STEPPER_DEACTIVE_TIME // Set in WanhaoD12.h
+#define DEFAULT_STEPPER_DEACTIVE_TIME WD12_DEFAULT_STEPPER_DEACTIVE_TIME
 #define DISABLE_INACTIVE_X true
 #define DISABLE_INACTIVE_Y true
 #define DISABLE_INACTIVE_Z true  // Set 'false' if the nozzle could fall onto your printed part!
@@ -1840,7 +1840,7 @@
 //#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K WD12_LIN_ADVANCE_K  // Set in WanhaoD12.h   // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K WD12_LIN_ADVANCE_K   // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
   //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
@@ -3524,8 +3524,8 @@
  */
 //#define GCODE_MACROS
 #if ENABLED(GCODE_MACROS)
-  #define GCODE_MACROS_SLOTS      WD12_GCODE_MACROS_SLOTS  // Set in WanhaoD12.h
-  #define GCODE_MACROS_SLOT_SIZE  WD12_GCODE_MACROS_SLOT_SIZE // Set in WanhaoD12.h
+  #define GCODE_MACROS_SLOTS      WD12_GCODE_MACROS_SLOTS  // Up to 10 may be used
+  #define GCODE_MACROS_SLOT_SIZE  WD12_GCODE_MACROS_SLOT_SIZE // Maximum length of a single macro
 #endif
 
 /**

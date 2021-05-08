@@ -20,8 +20,7 @@
  *
  */
 #pragma once
-
-#include "./WanhaoD12.h" 
+#include "WanhaoConfig/WanhaoD12.h"
 
 /**
  * Configuration.h
@@ -104,7 +103,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT WD12_SERIALPORT // Set in WanhaoD12.h
+#define SERIAL_PORT WD12_SERIALPORT
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
@@ -122,18 +121,18 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE WD12_BAUDRATE // Set in WanhaoD12.h
+#define BAUDRATE WD12_BAUDRATE
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD WD12_MOTHERBOARD // Set in WanhaoD12.h
+  #define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME WD12_CUSTOM_MACHINE_NAME // Set in WanhaoD12.h
+#define CUSTOM_MACHINE_NAME "Wanhao Duplicator 12"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -143,13 +142,13 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#define EXTRUDERS WD12_EXTRUDERS // Set in WanhaoD12.h
+#define EXTRUDERS WD12_EXTRUDERS
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
 // For Cyclops or any "multi-extruder" that shares a single nozzle.
-//#define SINGLENOZZLE // Set in WanhaoD12.h
+//#define SINGLENOZZLE
 
 // Save and restore temperature and fan speed on tool-change.
 // Set standby for the unselected tool with M104/106/109 T...
@@ -411,7 +410,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 WD12_TEMP_SENSOR_0 // Set in WanhaoD12.h
+#define TEMP_SENSOR_0 WD12_TEMP_SENSOR_0
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -419,7 +418,7 @@
 #define TEMP_SENSOR_5 0
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
-#define TEMP_SENSOR_BED WD12_TEMP_SENSOR_BED // Set in WanhaoD12.h
+#define TEMP_SENSOR_BED WD12_TEMP_SENSOR_BED
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 #define TEMP_SENSOR_COOLER 0
@@ -467,7 +466,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP  WD12_HEATER_0_MAXTEMP // Set in WanhaoD12.h
+#define HEATER_0_MAXTEMP WD12_HEATER_0_MAXTEMP
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -475,7 +474,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      WD12_BED_MAXTEMP // Set in WanhaoD12.h
+#define BED_MAXTEMP      WD12_BED_MAXTEMP
 #define CHAMBER_MAXTEMP  60
 
 /**
@@ -508,13 +507,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify between 1 and HOTENDS values per array.
     // If fewer than EXTRUDER values are provided, the last element will be repeated.
-    #define DEFAULT_Kp_LIST WD12_DEFAULT_Kp_LIST // Set in WanhaoD12.h
-    #define DEFAULT_Ki_LIST WD12_DEFAULT_Ki_LIST // Set in WanhaoD12.h
-    #define DEFAULT_Kd_LIST WD12_DEFAULT_Kd_LIST // Set in WanhaoD12.h
+    #define DEFAULT_Kp_LIST WD12_DEFAULT_Kp_LIST
+    #define DEFAULT_Ki_LIST WD12_DEFAULT_Ki_LIST
+    #define DEFAULT_Kd_LIST WD12_DEFAULT_Kd_LIST
   #else
-    #define DEFAULT_Kp  WD12_DEFAULT_Kp // Set in WanhaoD12.h
-    #define DEFAULT_Ki  WD12_DEFAULT_Ki // Set in WanhaoD12.h
-    #define DEFAULT_Kd  WD12_DEFAULT_Kd // Set in WanhaoD12.h
+    #define DEFAULT_Kp  WD12_DEFAULT_Kp
+    #define DEFAULT_Ki  WD12_DEFAULT_Ki
+    #define DEFAULT_Kd  WD12_DEFAULT_Kd
   #endif
 #endif // PIDTEMP
 
@@ -553,9 +552,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp WD12_DEFAULT_bedKp // Set in WanhaoD12.h
-  #define DEFAULT_bedKi WD12_DEFAULT_bedKi // Set in WanhaoD12.h
-  #define DEFAULT_bedKd WD12_DEFAULT_bedKd // Set in WanhaoD12.h
+  #define DEFAULT_bedKp WD12_DEFAULT_bedKp
+  #define DEFAULT_bedKi WD12_DEFAULT_bedKi
+  #define DEFAULT_bedKd WD12_DEFAULT_bedKd
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -622,14 +621,14 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 180
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH WD12_EXTRUDE_MAXLENGTH // Set in WanhaoD12.h
+#define EXTRUDE_MAXLENGTH WD12_EXTRUDE_MAXLENGTH
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -712,13 +711,13 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define Y_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define Z_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define X_MAX_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define Y_MAX_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define Z_MAX_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
-#define Z_MIN_PROBE_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set in WanhaoD12.h
+#define X_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING WD12_INVERT_ENDSTOP // Set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -738,16 +737,16 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  WD12_X_DRIVER_TYPE // Set in WanhaoD12.h
-#define Y_DRIVER_TYPE  WD12_Y_DRIVER_TYPE // Set in WanhaoD12.h
-#define Z_DRIVER_TYPE  WD12_Z_DRIVER_TYPE // Set in WanhaoD12.h
+#define X_DRIVER_TYPE  WD12_X_DRIVER_TYPE
+#define Y_DRIVER_TYPE  WD12_Y_DRIVER_TYPE
+#define Z_DRIVER_TYPE  WD12_Z_DRIVER_TYPE
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE WD12_E0_DRIVER_TYPE // Set in WanhaoD12.h
-#define E1_DRIVER_TYPE WD12_E1_DRIVER_TYPE // Set in WanhaoD12.h
+#define E0_DRIVER_TYPE WD12_E0_DRIVER_TYPE
+#define E1_DRIVER_TYPE WD12_E1_DRIVER_TYPE
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -801,18 +800,18 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   WD12_DEFAULT_AXIS_STEPS_PER_UNIT // Set in WanhaoD12.h
+#define DEFAULT_AXIS_STEPS_PER_UNIT   WD12_DEFAULT_AXIS_STEPS_PER_UNIT
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE         WD12_DEFAULT_MAX_FEEDRATE // Set in WanhaoD12.h
+#define DEFAULT_MAX_FEEDRATE          WD12_DEFAULT_MAX_FEEDRATE
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    WD12_MAX_FEEDRATE_EDIT_VALUES // Set in WanhaoD12.h
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -821,11 +820,11 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      WD12_DEFAULT_MAX_ACCELERATION // Set in WanhaoD12.h
+#define DEFAULT_MAX_ACCELERATION     WD12_DEFAULT_MAX_ACCELERATION
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       WD12_MAX_ACCEL_EDIT_VALUES // Set in WanhaoD12.h
+  #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -836,9 +835,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          WD12_DEFAULT_ACCELERATION    // Set in WanhaoD12.h
-#define DEFAULT_RETRACT_ACCELERATION  WD12_DEFAULT_RETRACT_ACCELERATION   // Set in WanhaoD12.h
-#define DEFAULT_TRAVEL_ACCELERATION   WD12_DEFAULT_TRAVEL_ACCELERATION   // Set in WanhaoD12.h
+#define DEFAULT_ACCELERATION          WD12_DEFAULT_ACCELERATION    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  WD12_DEFAULT_RETRACT_ACCELERATION    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   WD12_DEFAULT_TRAVEL_ACCELERATION    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -850,9 +849,9 @@
  */
 //#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK WD12_DEFAULT_XJERK // Set in WanhaoD12.h
-  #define DEFAULT_YJERK WD12_DEFAULT_YJERK // Set in WanhaoD12.h
-  #define DEFAULT_ZJERK WD12_DEFAULT_ZJERK // Set in WanhaoD12.h
+  #define DEFAULT_XJERK WD12_DEFAULT_XJERK
+  #define DEFAULT_YJERK WD12_DEFAULT_YJERK
+  #define DEFAULT_ZJERK WD12_DEFAULT_ZJERK
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
 
@@ -862,7 +861,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    WD12_DEFAULT_EJERK  // Set in WanhaoD12.h
+#define DEFAULT_EJERK    WD12_DEFAULT_EJERK  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -901,7 +900,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN //Enable by default (W12_TODO:Check)
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -921,9 +920,8 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#ifdef BLTOUCH
-#define Z_MIN_PROBE_PIN WD12_Z_MIN_PROBE_PIN //Enable by default (W12_TODO:Check)
-#endif
+//#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
+
 /**
  * Probe Type
  *
@@ -1051,9 +1049,8 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#ifdef BLTOUCH
-#define NOZZLE_TO_PROBE_OFFSET WD12_NOZZLE_TO_PROBE_OFFSET // Set in WanhaoD12.h
-#endif
+#define NOZZLE_TO_PROBE_OFFSET WD12_NOZZLE_TO_PROBE_OFFSET
+
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
 #define PROBING_MARGIN 10
@@ -1103,8 +1100,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+#define MULTIPLE_PROBING WD12_MULTIPLE_PROBING
+#define EXTRA_PROBING    WD12_EXTRA_PROBING
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1120,10 +1117,10 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-//#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define Z_CLEARANCE_DEPLOY_PROBE   WD12_Z_CLEARANCE_DEPLOY_PROBE // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES  WD12_Z_CLEARANCE_BETWEEN_PROBES // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     WD12_Z_CLEARANCE_MULTI_PROBE // Z Clearance between multiple probes
+#define Z_AFTER_PROBING           WD12_Z_AFTER_PROBING // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1159,8 +1156,8 @@
 // Require minimum nozzle and/or bed temperature for probing
 //#define PREHEAT_BEFORE_PROBING
 #if ENABLED(PREHEAT_BEFORE_PROBING)
-  #define PROBING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
-  #define PROBING_BED_TEMP     50
+  #define PROBING_NOZZLE_TEMP  WD12_PROBING_NOZZLE_TEMP   // (°C) Only applies to E0 at this time
+  #define PROBING_BED_TEMP     WD12_PROBING_BED_TEMP
 #endif
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
@@ -1187,15 +1184,15 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR WD12_INVERT_X_DIR  // Set in WanhaoD12.h
-#define INVERT_Y_DIR WD12_INVERT_Y_DIR  // Set in WanhaoD12.h
-#define INVERT_Z_DIR WD12_INVERT_Z_DIR  // Set in WanhaoD12.h
+#define INVERT_X_DIR WD12_INVERT_X_DIR
+#define INVERT_Y_DIR WD12_INVERT_Y_DIR
+#define INVERT_Z_DIR WD12_INVERT_Z_DIR
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR WD12_INVERT_E0_DIR  // Set in WanhaoD12.h
-#define INVERT_E1_DIR WD12_INVERT_E1_DIR  // Set in WanhaoD12.h
+#define INVERT_E0_DIR false
+#define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1229,16 +1226,16 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE WD12_X_BED_SIZE  // Set in WanhaoD12.h
-#define Y_BED_SIZE WD12_Y_BED_SIZE  // Set in WanhaoD12.h
+#define X_BED_SIZE WD12_X_BED_SIZE
+#define Y_BED_SIZE WD12_Y_BED_SIZE
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS WD12_X_MAX_POS  // Set in WanhaoD12.h
-#define Y_MAX_POS WD12_Y_MAX_POS  // Set in WanhaoD12.h
-#define Z_MAX_POS WD12_Z_MAX_POS  // Set in WanhaoD12.h
+#define X_MAX_POS WD12_X_MAX_POS
+#define Y_MAX_POS WD12_Y_MAX_POS
+#define Z_MAX_POS WD12_Z_MAX_POS
 
 /**
  * Software Endstops
@@ -1285,9 +1282,9 @@
 //#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
-  #define NUM_RUNOUT_SENSORS   WD12_NUM_RUNOUT_SENSORS          // Set in WanhaoD12.h
+  #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-  #define FIL_RUNOUT_STATE     WD12_FIL_RUNOUT_STATE   // Set in WanhaoD12.h  // Pin state indicating that filament is NOT present.
+  #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
   //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
@@ -1329,7 +1326,7 @@
   // Commands to execute on filament runout.
   // With multiple runout sensors use the %c placeholder for the current tool in commands (e.g., "M600 T%c")
   // NOTE: After 'M412 H1' the host handles filament runout and this script does not apply.
-  #define FILAMENT_RUNOUT_SCRIPT WD12_FILAMENT_RUNOUT_SCRIPT // Set in WanhaoD12.h
+  #define FILAMENT_RUNOUT_SCRIPT "M600"
 
   // After a runout is detected, continue printing this length of filament
   // before executing the runout script. Useful for a sensor at the end of
@@ -1451,8 +1448,8 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X WD12_GRID_MAX_POINTS_X // Set in WanhaoD12.h
-  #define GRID_MAX_POINTS_Y WD12_GRID_MAX_POINTS_Y // Set in WanhaoD12.h
+  #define GRID_MAX_POINTS_X WD12_GRID_MAX_POINTS_X
+  #define GRID_MAX_POINTS_Y WD12_GRID_MAX_POINTS_Y
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
@@ -1522,10 +1519,10 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LEVEL_BED_CORNERS // Set in WanhaoD12.h
+//#define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB WD12_LEVEL_CORNERS_INSET_LFRB // Set in WanhaoD12.h // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
@@ -1629,23 +1626,23 @@
 
 #if ENABLED(SKEW_CORRECTION)
   // Input all length measurements here:
-  #define XY_DIAG_AC WD12_XY_DIAG_AC // Set in WanhaoD12.h
-  #define XY_DIAG_BD WD12_XY_DIAG_BD // Set in WanhaoD12.h
-  #define XY_SIDE_AD WD12_XY_SIDE_AD // Set in WanhaoD12.h
+  #define XY_DIAG_AC 282.8427124746
+  #define XY_DIAG_BD 282.8427124746
+  #define XY_SIDE_AD 200
 
   // Or, set the default skew factors directly here
   // to override the above measurements:
-  #define XY_SKEW_FACTOR WD12_XY_SKEW_FACTOR // Set in WanhaoD12.h
+  #define XY_SKEW_FACTOR 0.0
 
   //#define SKEW_CORRECTION_FOR_Z
   #if ENABLED(SKEW_CORRECTION_FOR_Z)
-    #define XZ_DIAG_AC WD12_XZ_DIAG_AC // Set in WanhaoD12.h
-    #define XZ_DIAG_BD WD12_XZ_DIAG_BD // Set in WanhaoD12.h
-    #define YZ_DIAG_AC WD12_YZ_DIAG_AC // Set in WanhaoD12.h
-    #define YZ_DIAG_BD WD12_YZ_DIAG_BD // Set in WanhaoD12.h
-    #define YZ_SIDE_AD WD12_YZ_SIDE_AD // Set in WanhaoD12.h
-    #define XZ_SKEW_FACTOR WD12_XZ_SKEW_FACTOR // Set in WanhaoD12.h
-    #define YZ_SKEW_FACTOR WD12_YZ_SKEW_FACTOR // Set in WanhaoD12.h
+    #define XZ_DIAG_AC 282.8427124746
+    #define XZ_DIAG_BD 282.8427124746
+    #define YZ_DIAG_AC 282.8427124746
+    #define YZ_DIAG_BD 282.8427124746
+    #define YZ_SIDE_AD 200
+    #define XZ_SKEW_FACTOR 0.0
+    #define YZ_SKEW_FACTOR 0.0
   #endif
 
   // Enable this option for M852 to set skew at runtime
@@ -1700,19 +1697,17 @@
 //
 // Preheat Constants - Up to 5 are supported without changes
 //
-#define PREHEAT_1_LABEL       WD12_PREHEAT_1_LABEL  // Set in WanhaoD12.h
-#define PREHEAT_1_TEMP_HOTEND WD12_PREHEAT_1_TEMP_HOTEND  // Set in WanhaoD12.h
-#define PREHEAT_1_TEMP_BED    WD12_PREHEAT_1_TEMP_BED  // Set in WanhaoD12.h
+#define PREHEAT_1_LABEL       WD12_PREHEAT_1_LABEL
+#define PREHEAT_1_TEMP_HOTEND WD12_PREHEAT_1_TEMP_HOTEND
+#define PREHEAT_1_TEMP_BED    WD12_PREHEAT_1_TEMP_BED
 #define PREHEAT_1_TEMP_CHAMBER 35
-#define PREHEAT_1_FAN_SPEED   WD12_PREHEAT_1_FAN_SPEED  // Set in WanhaoD12.h
+#define PREHEAT_1_FAN_SPEED   WD12_PREHEAT_1_FAN_SPEED // Value from 0 to 255
 
-
-#define PREHEAT_2_LABEL       WD12_PREHEAT_2_LABEL  // Set in WanhaoD12.h
-#define PREHEAT_2_TEMP_HOTEND WD12_PREHEAT_2_TEMP_HOTEND  // Set in WanhaoD12.h
-#define PREHEAT_2_TEMP_BED    WD12_PREHEAT_2_TEMP_BED  // Set in WanhaoD12.h
+#define PREHEAT_2_LABEL       WD12_PREHEAT_2_LABEL
+#define PREHEAT_2_TEMP_HOTEND WD12_PREHEAT_2_TEMP_HOTEND
+#define PREHEAT_2_TEMP_BED    WD12_PREHEAT_2_TEMP_BED
 #define PREHEAT_2_TEMP_CHAMBER 35
-#define PREHEAT_2_FAN_SPEED   WD12_PREHEAT_2_FAN_SPEED  // Set in WanhaoD12.h
-
+#define PREHEAT_2_FAN_SPEED   WD12_PREHEAT_2_FAN_SPEED // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -1725,11 +1720,11 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-//#define NOZZLE_PARK_FEATURE // Set in WanhaoD12.h
+//#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT WD12_NOZZLE_PARK_POINT // Set in WanhaoD12.h
+  #define NOZZLE_PARK_POINT WD12_NOZZLE_PARK_POINT
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
@@ -1778,20 +1773,20 @@
 
 #if ENABLED(NOZZLE_CLEAN_FEATURE)
   // Default number of pattern repetitions
-  #define NOZZLE_CLEAN_STROKES  WD12_NOZZLE_CLEAN_STROKES  // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_STROKES  12
 
   // Default number of triangles
-  #define NOZZLE_CLEAN_TRIANGLES  WD12_NOZZLE_CLEAN_TRIANGLES // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_TRIANGLES  3
 
   // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
   // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-  #define NOZZLE_CLEAN_START_POINT WD12_NOZZLE_CLEAN_START_POINT // Set in WanhaoD12.h
-  #define NOZZLE_CLEAN_END_POINT   WD12_NOZZLE_CLEAN_END_POINT // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_START_POINT { {  30, 30, (Z_MIN_POS + 1) } }
+  #define NOZZLE_CLEAN_END_POINT   { { 100, 60, (Z_MIN_POS + 1) } }
 
   // Circular pattern radius
-  #define NOZZLE_CLEAN_CIRCLE_RADIUS WD12_NOZZLE_CLEAN_CIRCLE_RADIUS // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
   // Circular pattern circle fragments number
-  #define NOZZLE_CLEAN_CIRCLE_FN WD12_NOZZLE_CLEAN_CIRCLE_FN // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_CIRCLE_FN 10
   // Middle point of circle
   #define NOZZLE_CLEAN_CIRCLE_MIDDLE NOZZLE_CLEAN_START_POINT
 
@@ -1805,7 +1800,7 @@
   //#define NOZZLE_CLEAN_NO_Y
 
   // Require a minimum hotend temperature for cleaning
-  #define NOZZLE_CLEAN_MIN_TEMP WD12_NOZZLE_CLEAN_MIN_TEMP // Set in WanhaoD12.h
+  #define NOZZLE_CLEAN_MIN_TEMP 170
   //#define NOZZLE_CLEAN_HEATUP       // Heat up the nozzle instead of skipping wipe
 
   // Explicit wipe G-code script applies to a G12 with no arguments.
@@ -1894,7 +1889,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
-#define LCD_LANGUAGE WD12_LCD_LANGUAGE // Set in WanhaoD12.h
+#define LCD_LANGUAGE WD12_LCD_LANGUAGE
 
 /**
  * LCD Character Set
@@ -1918,7 +1913,7 @@
  *
  * :['JAPANESE', 'WESTERN', 'CYRILLIC']
  */
-#define DISPLAY_CHARSET_HD44780 WD12_DISPLAY_CHARSET // Set in WanhaoD12.h
+#define DISPLAY_CHARSET_HD44780 WD12_DISPLAY_CHARSET
 
 /**
  * Info Screen Style (0:Classic, 1:Průša)
@@ -2580,7 +2575,7 @@
   //#define TOUCH_CALIBRATION_Y -8981
   //#define TOUCH_OFFSET_X        -43
   //#define TOUCH_OFFSET_Y        257
-  //#define TOUCH_ORIENTATION TOUCH_LANDSCAPE
+  #define TOUCH_ORIENTATION WD12_TOUCH_ORIENTATION
 
   #if BOTH(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
@@ -2732,7 +2727,7 @@
 // (ms) Delay  before the next move will start, to give the servo time to reach its target angle.
 // 300ms is a good value but you can try less delay.
 // If the servo can't reach the requested position, increase it.
-#define SERVO_DELAY WD12_SERVO_DELAY // Set in WanhaoD12.h
+#define SERVO_DELAY { 300 }
 
 // Only power servos during movement, otherwise leave off to prevent jitter
 //#define DEACTIVATE_SERVOS_AFTER_MOVE
