@@ -3,20 +3,11 @@
 
 
 // Default Based on my setting
-#define WD12_NOZZLE_TO_PROBE_OFFSET { -46, -6, -1 }
+#define WD12_NOZZLE_TO_PROBE_OFFSET { -48.8, -7.4, -1.51 }
 
 // If BLtouch connect to ZMin connector
-//#define WD12_BLTOUCH_ZMAX
 
-#if ! defined(WD12_BLTOUCH_ZMAX)
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-#endif
-
-#if defined(WD12_BLTOUCH_ZMAX)
-//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-#define USE_ZMAX_PLUG
-#define Z_MIN_PROBE_PIN PC4
-#endif
 
 #define WD12_Z_CLEARANCE_DEPLOY_PROBE 15
 #define WD12_MULTIPLE_PROBING 2
@@ -33,4 +24,5 @@
 #define ENDSTOPPULLUPS
 #define BLTOUCH
 #define AUTO_BED_LEVELING_BILINEAR
+#define PROBE_OFFSET_WIZARD
 #endif
